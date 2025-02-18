@@ -27,7 +27,7 @@
                 <div class="card">
                     <div class="card-body text-center">
                         <h2 class="card-title">Alchemy Hub 30 Day Key</h2>
-                        <p class="card-text">Harga: Rp 50.000</p>
+                        <p class="card-text">Harga: Rp 20.000</p>
                         <button class="btn btn-primary" onclick="buyProduct('Alchemy Hub 30 Day Key', 20000)">Beli Sekarang</button>
                     </div>
                 </div>
@@ -53,18 +53,18 @@
                     <button type="button" class="close" onclick="closeModal()">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <p>Silakan lakukan pembayaran sebesar <span id="payment-amount"></span> ke salah satu metode berikut:</p>
-                    <ul class="list-unstyled">
-                        <li>QRIS: <img src="images/qris.png" alt="QRIS" width="50"> <span id="price-qris"></span></li>
-                        <li>Dana: <img src="images/dana.png" alt="Dana" width="50"> 081234567890 <span id="price-dana"></span></li>
-                        <li>OVO: <img src="images/ovo.png" alt="OVO" width="50"> 081234567890 <span id="price-ovo"></span></li>
-                        <li>GoPay: <img src="images/gopay.png" alt="GoPay" width="50"> 081234567890 <span id="price-gopay"></span></li>
-                        <li>ShopeePay: <img src="images/shopeepay.png" alt="ShopeePay" width="50"> 081234567890 <span id="price-shopeepay"></span></li>
-                    </ul>
-                    <p>Setelah pembayaran selesai, produk akan dikirim melalui WhatsApp ke nomor yang Anda masukkan.</p>
+                    <p>Silakan pilih metode pembayaran:</p>
+                    <select id="payment-method" class="form-control">
+                        <option value="QRIS">QRIS</option>
+                        <option value="Dana">Dana</option>
+                        <option value="OVO">OVO</option>
+                        <option value="GoPay">GoPay</option>
+                        <option value="ShopeePay">ShopeePay</option>
+                    </select>
+                    <p>Setelah memilih metode pembayaran, klik tombol "Bayar Sekarang" untuk melanjutkan ke WhatsApp.</p>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-success" onclick="confirmPayment()">Konfirmasi Pembayaran</button>
+                    <button class="btn btn-success" onclick="confirmPayment()">Bayar Sekarang</button>
                 </div>
             </div>
         </div>
