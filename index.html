@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAKASTORE</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="bg-dark text-white text-center py-5">
+        <h1>TAKASTORE</h1>
+        <p class="lead">Tempat terbaik untuk membeli kunci Alchemy Hub</p>
+    </header>
+    <main class="container my-5">
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h2 class="card-title">Alchemy Hub Permanent Key</h2>
+                        <p class="card-text">Harga: Rp 80.000</p>
+                        <button class="btn btn-primary" onclick="buyProduct('Alchemy Hub Permanent Key', 80000)">Beli Sekarang</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h2 class="card-title">Alchemy Hub 30 Day Key</h2>
+                        <p class="card-text">Harga: Rp 50.000</p>
+                        <button class="btn btn-primary" onclick="buyProduct('Alchemy Hub 30 Day Key', 20000)">Beli Sekarang</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="bg-light text-center py-3">
+        <p>Pembayaran melalui:</p>
+        <div class="payment-logos">
+            <img src="images/qris.png" alt="QRIS" width="50">
+            <img src="images/dana.png" alt="Dana" width="50">
+            <img src="images/ovo.png" alt="OVO" width="50">
+            <img src="images/gopay.png" alt="GoPay" width="50">
+            <img src="images/shopeepay.png" alt="ShopeePay" width="50">
+        </div>
+    </footer>
+
+    <div id="payment-modal" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Pembayaran</h5>
+                    <button type="button" class="close" onclick="closeModal()">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Silakan lakukan pembayaran sebesar <span id="payment-amount"></span> ke salah satu metode berikut:</p>
+                    <ul class="list-unstyled">
+                        <li>QRIS: <img src="images/qris.png" alt="QRIS" width="50"> <span id="price-qris"></span></li>
+                        <li>Dana: <img src="images/dana.png" alt="Dana" width="50"> 081234567890 <span id="price-dana"></span></li>
+                        <li>OVO: <img src="images/ovo.png" alt="OVO" width="50"> 081234567890 <span id="price-ovo"></span></li>
+                        <li>GoPay: <img src="images/gopay.png" alt="GoPay" width="50"> 081234567890 <span id="price-gopay"></span></li>
+                        <li>ShopeePay: <img src="images/shopeepay.png" alt="ShopeePay" width="50"> 081234567890 <span id="price-shopeepay"></span></li>
+                    </ul>
+                    <p>Setelah pembayaran selesai, produk akan dikirim melalui WhatsApp ke nomor yang Anda masukkan.</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-success" onclick="confirmPayment()">Konfirmasi Pembayaran</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
