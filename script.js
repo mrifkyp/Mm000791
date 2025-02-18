@@ -1,17 +1,10 @@
+let selectedProductName = '';
+let selectedProductPrice = 0;
+
 function buyProduct(productName, productPrice) {
-    const buyerPhoneNumber = prompt("Masukkan nomor WhatsApp Anda:");
-    if (buyerPhoneNumber) {
-        document.getElementById('payment-amount').innerText = `Rp ${productPrice}`;
-        const adminFee = 2000; // Biaya admin tetap Rp 2000
-        document.getElementById('price-qris').innerText = ` (Rp ${productPrice + adminFee})`;
-        document.getElementById('price-dana').innerText = ` (Rp ${productPrice + adminFee})`;
-        document.getElementById('price-ovo').innerText = ` (Rp ${productPrice + adminFee})`;
-        document.getElementById('price-gopay').innerText = ` (Rp ${productPrice + adminFee})`;
-        document.getElementById('price-shopeepay').innerText = ` (Rp ${productPrice + adminFee})`;
-        openModal();
-    } else {
-        alert("Pembelian dibatalkan. Nomor WhatsApp diperlukan untuk melanjutkan pembelian.");
-    }
+    selectedProductName = productName;
+    selectedProductPrice = productPrice + 2000; // Tambahkan biaya admin tetap Rp 2000
+    openModal();
 }
 
 function openModal() {
@@ -23,12 +16,9 @@ function closeModal() {
 }
 
 function confirmPayment() {
-    const buyerPhoneNumber = prompt("Masukkan nomor WhatsApp Anda untuk konfirmasi pembayaran:");
-    if (buyerPhoneNumber) {
-        alert(`Pembayaran berhasil dikonfirmasi. Produk akan dikirim ke nomor WhatsApp ${buyerPhoneNumber}.`);
-        closeModal();
-        // Implementasi pengiriman WhatsApp ke admin bisa ditambahkan di sini
-    } else {
-        alert("Konfirmasi pembayaran dibatalkan. Nomor WhatsApp diperlukan untuk melanjutkan.");
-    }
+    const paymentMethod = document.getElementById('payment-method').value;
+    const phoneNumber = '6281535378718'; // Ganti dengan nomor WhatsApp Anda
+    const message = `Selamat pagi min, aku mau beli *${selectedProductName}*\n\nHarga: Rp *${selectedProductPrice}*\nMetode Pembayaran: *${paymentMethod}*`;
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
 }
