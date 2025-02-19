@@ -1,24 +1,26 @@
 let selectedProductName = '';
 let selectedProductPrice = 0;
+let selectedPaymentMethod = '';
 
-function buyProduct(productName, productPrice) {
+function selectProduct(productName, productPrice) {
     selectedProductName = productName;
-    selectedProductPrice = productPrice + 2000; // Tambahkan biaya admin tetap Rp 2000
-    openModal();
+    selectedProductPrice = productPrice;
+    alert(`Anda memilih ${productName} dengan harga Rp ${selectedProductPrice}`);
 }
 
-function openModal() {
-    $('#payment-modal').modal('show');
+function selectPayment(paymentMethod) {
+    selectedPaymentMethod = paymentMethod;
+    alert(`Anda memilih metode pembayaran ${paymentMethod}`);
 }
 
-function closeModal() {
-    $('#payment-modal').modal('hide');
-}
-
-function confirmPayment() {
-    const paymentMethod = document.getElementById('payment-method').value;
-    const phoneNumber = '6281535378718'; // Ganti dengan nomor WhatsApp Anda
-    const message = `Selamat pagi min, aku mau beli *${selectedProductName}*\n\nHarga: Rp *${selectedProductPrice}*\nMetode Pembayaran: *${paymentMethod}*`;
+function proceedToWhatsApp() {
+    const whatsappNumber = document.getElementById('whatsapp-number').value;
+    if (!selectedProductName || !whatsappNumber || !selectedPaymentMethod) {
+        alert('Lengkapi semua data terlebih dahulu.');
+        return;
+    }
+    const phoneNumber = '6281234567890'; // Ganti dengan nomor WhatsApp Anda
+    const message = `Selamat pagi min, aku mau beli *${selectedProductName}*\n\nHarga: Rp *${selectedProductPrice}*\nMetode Pembayaran: *${selectedPaymentMethod}*`;
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
 }
