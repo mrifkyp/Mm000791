@@ -1,73 +1,172 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TAKASTORE</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <title>Script Premium</title>
+    <style>
+        body {
+            background-color: #0f172a;
+            color: white;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .container {
+            max-width: 450px;
+            margin: auto;
+            background-color: #1e293b;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .card {
+            background-color: #0f172a;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+        h5 {
+            margin-bottom: 10px;
+        }
+        input, select {
+            width: calc(100% - 20px);
+            padding: 12px;
+            font-size: 16px;
+            margin-top: 5px;
+            border-radius: 6px;
+            border: none;
+            background-color: #334155;
+            color: white;
+        }
+        .btn {
+            background-color: #0284c7;
+            color: white;
+            padding: 12px;
+            width: 100%;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn:hover {
+            background-color: #0369a1;
+        }
+
+        /* Gaya Grid untuk Metode Pembayaran */
+        .payment-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .payment-option {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #334155;
+            padding: 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .payment-option img {
+            width: 60px;
+            height: auto;
+        }
+
+        .payment-option:hover {
+            background-color: #475569;
+        }
+    </style>
 </head>
 <body>
-    <header class="bg-dark text-white text-center py-5">
-        <h1>TAKASTORE</h1>
-        <p class="lead">Tempat terbaik untuk membeli kunci Alchemy Hub</p>
-    </header>
-    <main class="container my-5">
-        <div class="row">
-            <div class="col-md-6 mb-4">
-                <div class="card" onclick="selectProduct('Alchemy Hub Permanent Key', 80000)">
-                    <div class="card-body text-center">
-                        <h2 class="card-title">Alchemy Hub Permanent Key</h2>
-                        <p class="card-text">Harga: Rp 80.000</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 mb-4">
-                <div class="card" onclick="selectProduct('Alchemy Hub 30 Day Key', 20000)">
-                    <div class="card-body text-center">
-                        <h2 class="card-title">Alchemy Hub 30 Day Key</h2>
-                        <p class="card-text">Harga: Rp 20.000</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12 mb-4">
-                <h3>Lengkapi Data</h3>
-                <input type="text" id="whatsapp-number" class="form-control" placeholder="Nomor WhatsApp">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12 mb-4">
-                <h3>Pilih Pembayaran</h3>
-                <div class="payment-logos">
-                    <button class="btn btn-light" onclick="selectPayment('OVO')"><img src="images/ovo.png" alt="OVO" width="50"></button>
-                    <button class="btn btn-light" onclick="selectPayment('Dana')"><img src="images/dana.png" alt="Dana" width="50"></button>
-                    <button class="btn btn-light" onclick="selectPayment('GoPay')"><img src="images/gopay.png" alt="GoPay" width="50"></button>
-                    <button class="btn btn-light" onclick="selectPayment('ShopeePay')"><img src="images/shopeepay.png" alt="ShopeePay" width="50"></button>
-                    <button class="btn btn-light" onclick="selectPayment('QRIS')"><img src="images/qris.png" alt="QRIS" width="50"></button>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <button class="btn btn-success" onclick="proceedToWhatsApp()">Bayar Sekarang</button>
-            </div>
-        </div>
-    </main>
-    <footer class="bg-light text-center py-3">
-        <p>Pembayaran melalui:</p>
-        <div class="payment-logos">
-            <img src="images/qris.png" alt="QRIS" width="50">
-            <img src="images/dana.png" alt="Dana" width="50">
-            <img src="images/ovo.png" alt="OVO" width="50">
-            <img src="images/gopay.png" alt="GoPay" width="50">
-            <img src="images/shopeepay.png" alt="ShopeePay" width="50">
-        </div>
-    </footer>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="script.js"></script>
+    <div class="container">
+        <h2>🔑 Script Premium</h2>
+
+        <!-- Pilih Produk -->
+        <div class="card">
+            <h5>1️⃣ Pilih Produk</h5>
+            <select id="product" style="padding: 14px; font-size: 16px;">
+                <option value="">Pilih Produk</option>
+                <option value="Alchemy Hub">Alchemy Hub [PERMANEN] - Rp. 80.000</option>
+                <option value="Alchemy Hub">Alchemy Hub [30 days] - Rp. 50.000</option>
+            </select>
+        </div>
+
+        <!-- Lengkapi Data -->
+        <div class="card">
+            <h5>2️⃣ Lengkapi Data</h5>
+            <input type="email" id="email" placeholder="Email Anda">
+        </div>
+
+        <!-- Pilih Pembayaran -->
+        <div class="card">
+            <h5>3️⃣ Pilih Pembayaran</h5>
+            <div class="payment-grid">
+                <div class="payment-option" onclick="setPayment('QRIS')">
+                    <img src="images/qris.png" alt="QRIS">
+                </div>
+                <div class="payment-option" onclick="setPayment('ShopeePay')">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5b/ShopeePayLogo.png" alt="ShopeePay">
+                </div>
+                <div class="payment-option" onclick="setPayment('DANA')">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/DANA_logo.png" alt="DANA">
+                </div>
+                <div class="payment-option" onclick="setPayment('OVO')">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/OVO_logo.png" alt="OVO">
+                </div>
+                <div class="payment-option" onclick="setPayment('GoPay')">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Gopay_logo.svg/512px-Gopay_logo.svg.png" alt="GoPay">
+                </div>
+            </div>
+            <input type="hidden" id="payment" value="">
+        </div>
+
+        <!-- Data Tambahan -->
+        <div class="card">
+            <h5>4️⃣ Data Tambahan</h5>
+            <input type="tel" id="whatsapp" placeholder="WhatsApp (628xxx)">
+            <small>Dengan membeli kamu menyetujui ketentuan dan layanan.</small>
+        </div>
+
+        <button class="btn" onclick="beliSekarang()">🛒 Beli Sekarang</button>
+    </div>
+
+    <script>
+        function setPayment(method) {
+            document.getElementById("payment").value = method;
+            alert("Metode pembayaran dipilih: " + method);
+        }
+
+        function beliSekarang() {
+            const product = document.getElementById("product").value;
+            const email = document.getElementById("email").value;
+            const payment = document.getElementById("payment").value;
+            const whatsapp = document.getElementById("whatsapp").value;
+
+            if (!product) {
+                alert("Pilih produk terlebih dahulu!");
+                return;
+            }
+            if (!email) {
+                alert("Masukkan email Anda!");
+                return;
+            }
+            if (!whatsapp) {
+                alert("Masukkan nomor WhatsApp!");
+                return;
+            }
+            if (!payment) {
+                alert("Pilih metode pembayaran!");
+                return;
+            }
+
+            const message = `Halo, saya ingin membeli *${product}*.\n\n📩 Email: ${email}\n📱 WhatsApp: ${whatsapp}\n💳 Metode pembayaran: *${payment}*`;
+            const whatsappURL = `https://wa.me/6281535378718?text=${encodeURIComponent(message)}`;
+            window.location.href = whatsappURL;
+        }
+    </script>
+
 </body>
 </html>
