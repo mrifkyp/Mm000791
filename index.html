@@ -15,22 +15,43 @@
     <main class="container my-5">
         <div class="row">
             <div class="col-md-6 mb-4">
-                <div class="card">
+                <div class="card" onclick="selectProduct('Alchemy Hub Permanent Key', 80000)">
                     <div class="card-body text-center">
                         <h2 class="card-title">Alchemy Hub Permanent Key</h2>
                         <p class="card-text">Harga: Rp 80.000</p>
-                        <button class="btn btn-primary" onclick="buyProduct('Alchemy Hub Permanent Key', 80000)">Beli Sekarang</button>
                     </div>
                 </div>
             </div>
             <div class="col-md-6 mb-4">
-                <div class="card">
+                <div class="card" onclick="selectProduct('Alchemy Hub 30 Day Key', 20000)">
                     <div class="card-body text-center">
                         <h2 class="card-title">Alchemy Hub 30 Day Key</h2>
                         <p class="card-text">Harga: Rp 20.000</p>
-                        <button class="btn btn-primary" onclick="buyProduct('Alchemy Hub 30 Day Key', 20000)">Beli Sekarang</button>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 mb-4">
+                <h3>Lengkapi Data</h3>
+                <input type="text" id="whatsapp-number" class="form-control" placeholder="Nomor WhatsApp">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 mb-4">
+                <h3>Pilih Pembayaran</h3>
+                <div class="payment-logos">
+                    <button class="btn btn-light" onclick="selectPayment('OVO')"><img src="images/ovo.png" alt="OVO" width="50"></button>
+                    <button class="btn btn-light" onclick="selectPayment('Dana')"><img src="images/dana.png" alt="Dana" width="50"></button>
+                    <button class="btn btn-light" onclick="selectPayment('GoPay')"><img src="images/gopay.png" alt="GoPay" width="50"></button>
+                    <button class="btn btn-light" onclick="selectPayment('ShopeePay')"><img src="images/shopeepay.png" alt="ShopeePay" width="50"></button>
+                    <button class="btn btn-light" onclick="selectPayment('QRIS')"><img src="images/qris.png" alt="QRIS" width="50"></button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <button class="btn btn-success" onclick="proceedToWhatsApp()">Bayar Sekarang</button>
             </div>
         </div>
     </main>
@@ -44,31 +65,6 @@
             <img src="images/shopeepay.png" alt="ShopeePay" width="50">
         </div>
     </footer>
-
-    <div id="payment-modal" class="modal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Pembayaran</h5>
-                    <button type="button" class="close" onclick="closeModal()">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <p>Silakan pilih metode pembayaran:</p>
-                    <select id="payment-method" class="form-control">
-                        <option value="QRIS">QRIS</option>
-                        <option value="Dana">Dana</option>
-                        <option value="OVO">OVO</option>
-                        <option value="GoPay">GoPay</option>
-                        <option value="ShopeePay">ShopeePay</option>
-                    </select>
-                    <p>Setelah memilih metode pembayaran, klik tombol "Bayar Sekarang" untuk melanjutkan ke WhatsApp.</p>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-success" onclick="confirmPayment()">Bayar Sekarang</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
