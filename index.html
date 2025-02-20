@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="id">
+<!DOCTYPE html>
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -107,6 +108,19 @@
         .payment-option:hover {
             background-color: #475569;
         }
+        .btn {
+            background-color: #10b981;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+        .btn:hover {
+            background-color: #059669;
+        }
     </style>
 </head>
 <body>
@@ -157,9 +171,23 @@
         document.getElementById("sidebar").classList.toggle("hidden");
         document.getElementById("main-content").classList.toggle("expanded");
     }
+
+    function setProduct(productName, price) {
+        document.getElementById("product").value = productName;
+        document.getElementById("productAlert").style.display = "none";
+        alert("Produk yang dipilih: " + productName + " - " + price);
+    }
+
+    function setPayment(paymentMethod) {
+        document.getElementById("payment").value = paymentMethod;
+        document.getElementById("paymentAlert").style.display = "none";
+        alert("Metode pembayaran yang dipilih: " + paymentMethod);
+    }
+
     function beliSekarang() {
         const product = document.getElementById("product").value;
         const payment = document.getElementById("payment").value;
+
         if (!product) {
             document.getElementById("productAlert").style.display = "block";
             return;
@@ -168,12 +196,8 @@
             document.getElementById("paymentAlert").style.display = "block";
             return;
         }
-        const message = `Halo, saya ingin membeli *${product}* dengan metode pembayaran *${payment}*.`;
-        const whatsappURL = `https://wa.me/6281535378718?text=${encodeURIComponent(message)}`;
-        window.location.href = whatsappURL;
-    }
-    function hideAlert(id) {
-        document.getElementById(id).style.display = "none";
+
+        alert("Anda akan membeli " + product + " menggunakan metode pembayaran " + payment);
     }
 </script>
 </body>
