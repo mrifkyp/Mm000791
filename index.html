@@ -19,6 +19,23 @@
             position: fixed;
             left: 0;
             top: 0;
+            transition: transform 0.3s ease;
+        }
+        .sidebar.hidden {
+            transform: translateX(-100%);
+        }
+        .menu-btn {
+            background-color: #0284c7;
+            color: white;
+            font-size: 20px;
+            border: none;
+            cursor: pointer;
+            padding: 10px 15px;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            border-radius: 5px;
+            z-index: 1000;
         }
         .sidebar a {
             display: block;
@@ -39,6 +56,10 @@
             padding: 20px;
             border-radius: 10px;
             margin-left: 220px;
+            transition: margin-left 0.3s ease;
+        }
+        .container.expanded {
+            margin-left: 0;
         }
         .alert {
             padding: 10px;
@@ -63,19 +84,6 @@
         }
         .product-card:hover {
             background-color: #1e40af;
-        }
-        .btn {
-            background-color: #0284c7;
-            color: white;
-            padding: 12px;
-            width: 100%;
-            border-radius: 6px;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        .btn:hover {
-            background-color: #0369a1;
         }
         .payment-grid {
             display: grid;
@@ -102,12 +110,13 @@
     </style>
 </head>
 <body>
-<div class="sidebar">
+<button class="menu-btn" onclick="toggleSidebar()">☰</button>
+<div class="sidebar" id="sidebar">
     <a href="#produk">🛒 Produk</a>
     <a href="#pembayaran">💳 Pembayaran</a>
     <a href="#riwayat">📜 Riwayat Transaksi</a>
 </div>
-<div class="container">
+<div class="container" id="main-content">
     <h2>🔑 Script Premium</h2>
     <div class="alert" id="productAlert">Pilih Produk Yang Ingin Kamu Beli</div>
     <div class="product-grid" id="produk">
@@ -129,19 +138,24 @@
             <div class="payment-option" onclick="setPayment('ShopeePay')">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/5/5b/ShopeePayLogo.png" alt="ShopeePay">
             </div>
+            <div class="payment-option" onclick="setPayment('DANA')">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/DANA_logo.png" alt="DANA">
+            </div>
+            <div class="payment-option" onclick="setPayment('OVO')">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/OVO_logo.png" alt="OVO">
+            </div>
+            <div class="payment-option" onclick="setPayment('GoPay')">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Gopay_logo.svg/512px-Gopay_logo.svg.png" alt="GoPay">
+            </div>
         </div>
         <input type="hidden" id="payment" value="">
     </div>
     <button class="btn" onclick="beliSekarang()">🛒 Beli Sekarang</button>
 </div>
 <script>
-    function setProduct(name, price) {
-        document.getElementById("product").value = name + " - " + price;
-        hideAlert("productAlert");
-    }
-    function setPayment(method) {
-        document.getElementById("payment").value = method;
-        hideAlert("paymentAlert");
+    function toggleSidebar() {
+        document.getElementById("sidebar").classList.toggle("hidden");
+        document.getElementById("main-content").classList.toggle("expanded");
     }
     function beliSekarang() {
         const product = document.getElementById("product").value;
