@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="id">
+<!DOCTYPE html><html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,32 +9,60 @@
             color: white;
             font-family: Arial, sans-serif;
             padding: 20px;
+            display: flex;
+        }
+        .sidebar {
+            width: 200px;
+            background-color: #1e293b;
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+        }
+        .sidebar a {
+            display: block;
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            background-color: #334155;
+        }
+        .sidebar a:hover {
+            background-color: #475569;
         }
         .container {
-            max-width: 450px;
+            max-width: 600px;
             margin: auto;
             background-color: #1e293b;
             padding: 20px;
             border-radius: 10px;
+            margin-left: 220px;
         }
-        .card {
-            background-color: #0f172a;
-            padding: 12px;
-            border-radius: 8px;
-            margin-bottom: 12px;
-        }
-        h5 {
+        .alert {
+            padding: 10px;
             margin-bottom: 10px;
-        }
-        input, select {
-            width: calc(100% - 20px);
-            padding: 12px;
-            font-size: 16px;
-            margin-top: 5px;
-            border-radius: 6px;
-            border: none;
-            background-color: #334155;
+            border-radius: 5px;
+            background-color: #dc3545;
             color: white;
+            display: none;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+        .product-card {
+            background-color: #0f172a;
+            padding: 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .product-card:hover {
+            background-color: #1e40af;
         }
         .btn {
             background-color: #0284c7;
@@ -50,14 +77,11 @@
         .btn:hover {
             background-color: #0369a1;
         }
-
-        /* Gaya Grid untuk Metode Pembayaran */
         .payment-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 10px;
         }
-
         .payment-option {
             display: flex;
             justify-content: center;
@@ -68,105 +92,75 @@
             cursor: pointer;
             transition: 0.3s;
         }
-
         .payment-option img {
             width: 60px;
             height: auto;
         }
-
         .payment-option:hover {
             background-color: #475569;
         }
     </style>
 </head>
 <body>
-
-    <div class="container">
-        <h2>🔑 Script Premium</h2>
-
-        <!-- Pilih Produk -->
-        <div class="card">
-            <h5>1️⃣ Pilih Produk</h5>
-            <select id="product" style="padding: 14px; font-size: 16px;">
-                <option value="">Pilih Produk</option>
-                <option value="Alchemy Hub">Alchemy Hub [PERMANEN] - Rp. 80.000</option>
-                <option value="Alchemy Hub">Alchemy Hub [30 days] - Rp. 50.000</option>
-            </select>
+<div class="sidebar">
+    <a href="#produk">🛒 Produk</a>
+    <a href="#pembayaran">💳 Pembayaran</a>
+    <a href="#riwayat">📜 Riwayat Transaksi</a>
+</div>
+<div class="container">
+    <h2>🔑 Script Premium</h2>
+    <div class="alert" id="productAlert">Pilih Produk Yang Ingin Kamu Beli</div>
+    <div class="product-grid" id="produk">
+        <div class="product-card" onclick="setProduct('Mercury [PERMANEN]', 'Rp. 72.000')">
+            Mercury [PERMANEN] <br> <strong>Rp. 72.000</strong>
         </div>
-
-        <!-- Lengkapi Data -->
-        <div class="card">
-            <h5>2️⃣ Lengkapi Data</h5>
-            <input type="email" id="email" placeholder="Email Anda">
+        <div class="product-card" onclick="setProduct('Lunor [PERMANEN]', 'Rp. 139.200')">
+            Lunor [PERMANEN] <br> <strong>Rp. 139.200</strong>
         </div>
-
-        <!-- Pilih Pembayaran -->
-        <div class="card">
-            <h5>3️⃣ Pilih Pembayaran</h5>
-            <div class="payment-grid">
-                <div class="payment-option" onclick="setPayment('QRIS')">
-                    <img src="images/qris.png" alt="QRIS">
-                </div>
-                <div class="payment-option" onclick="setPayment('ShopeePay')">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5b/ShopeePayLogo.png" alt="ShopeePay">
-                </div>
-                <div class="payment-option" onclick="setPayment('DANA')">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/DANA_logo.png" alt="DANA">
-                </div>
-                <div class="payment-option" onclick="setPayment('OVO')">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/OVO_logo.png" alt="OVO">
-                </div>
-                <div class="payment-option" onclick="setPayment('GoPay')">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Gopay_logo.svg/512px-Gopay_logo.svg.png" alt="GoPay">
-                </div>
-            </div>
-            <input type="hidden" id="payment" value="">
-        </div>
-
-        <!-- Data Tambahan -->
-        <div class="card">
-            <h5>4️⃣ Data Tambahan</h5>
-            <input type="tel" id="whatsapp" placeholder="WhatsApp (628xxx)">
-            <small>Dengan membeli kamu menyetujui ketentuan dan layanan.</small>
-        </div>
-
-        <button class="btn" onclick="beliSekarang()">🛒 Beli Sekarang</button>
     </div>
-
-    <script>
-        function setPayment(method) {
-            document.getElementById("payment").value = method;
-            alert("Metode pembayaran dipilih: " + method);
+    <input type="hidden" id="product" value="">
+    <div class="alert" id="paymentAlert">Pilih Metode Pembayaran Yang Ingin Kamu Gunakan</div>
+    <div class="card" id="pembayaran">
+        <h5>2️⃣ Pilih Pembayaran</h5>
+        <div class="payment-grid">
+            <div class="payment-option" onclick="setPayment('QRIS')">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/1/14/QRIS_logo.png" alt="QRIS">
+            </div>
+            <div class="payment-option" onclick="setPayment('ShopeePay')">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/5b/ShopeePayLogo.png" alt="ShopeePay">
+            </div>
+        </div>
+        <input type="hidden" id="payment" value="">
+    </div>
+    <button class="btn" onclick="beliSekarang()">🛒 Beli Sekarang</button>
+</div>
+<script>
+    function setProduct(name, price) {
+        document.getElementById("product").value = name + " - " + price;
+        hideAlert("productAlert");
+    }
+    function setPayment(method) {
+        document.getElementById("payment").value = method;
+        hideAlert("paymentAlert");
+    }
+    function beliSekarang() {
+        const product = document.getElementById("product").value;
+        const payment = document.getElementById("payment").value;
+        if (!product) {
+            document.getElementById("productAlert").style.display = "block";
+            return;
         }
-
-        function beliSekarang() {
-            const product = document.getElementById("product").value;
-            const email = document.getElementById("email").value;
-            const payment = document.getElementById("payment").value;
-            const whatsapp = document.getElementById("whatsapp").value;
-
-            if (!product) {
-                alert("Pilih produk terlebih dahulu!");
-                return;
-            }
-            if (!email) {
-                alert("Masukkan email Anda!");
-                return;
-            }
-            if (!whatsapp) {
-                alert("Masukkan nomor WhatsApp!");
-                return;
-            }
-            if (!payment) {
-                alert("Pilih metode pembayaran!");
-                return;
-            }
-
-            const message = `Halo, saya ingin membeli *${product}*.\n\n📩 Email: ${email}\n📱 WhatsApp: ${whatsapp}\n💳 Metode pembayaran: *${payment}*`;
-            const whatsappURL = `https://wa.me/6281535378718?text=${encodeURIComponent(message)}`;
-            window.location.href = whatsappURL;
+        if (!payment) {
+            document.getElementById("paymentAlert").style.display = "block";
+            return;
         }
-    </script>
-
+        const message = `Halo, saya ingin membeli *${product}* dengan metode pembayaran *${payment}*.`;
+        const whatsappURL = `https://wa.me/6281535378718?text=${encodeURIComponent(message)}`;
+        window.location.href = whatsappURL;
+    }
+    function hideAlert(id) {
+        document.getElementById(id).style.display = "none";
+    }
+</script>
 </body>
 </html>
